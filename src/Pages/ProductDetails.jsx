@@ -1,84 +1,84 @@
-import { IoAdd, IoStar } from 'react-icons/io5'
+import { IoAdd, IoStar, IoStarHalfSharp, IoStarOutline, IoStarSharp } from 'react-icons/io5'
 import Container from '../Components/Container'
-import sl1 from "../assets/sl1.png"
-import ls2 from "../assets/ls2.png"
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
+import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from 'react-icons/io'
+import { ApiData } from '../Components/ContextApi'
 
 
 
 const ProductDetails = () => {
+  let info = useContext(ApiData)
+  let productId = useParams()
+  console.log(productId);
+  
 
-  let [on, seoShow] = useState(false)
+  let [singleProducts, setSingleProducts] = useState({})
 
-  let [toww, sewShow] = useState(false)
-  let [three, seTShow] = useState(false)
-  let [four, seFShow] = useState(false)
-  let [five, seFFShow] = useState(false)
+  let singleProduct = () => {
+    axios.get(`https://dummyjson.com/products/${productId.id}`).then((response) => {
+      setSingleProducts(response.data);
+    })
+  }
+  useEffect(() => {
+    singleProduct();
+  }, []);
+  
+  console.log(info);
+  
+  let clientRating = Array.from({length:5},(_,index)=>{
+    let number =index + 0.5
+    return singleProducts.rating > index + 1 ? ( <IoMdStar /> ) : singleProducts.rating > number ? <IoMdStarHalf /> :
+      (<IoMdStarOutline />);
+    
+  })
+  console.log(clientRating);
+  
+  
+  
 
-  let [onk, seoShowK] = useState(true)
-
-  let [showpp, setShowpp] = useState(false)
-
-  let [onshow,setOnShow] = useState(1)
-
+  let [onk, seoShowK] = useState(true);
+  let [showpp, setShowpp] = useState(false);
+  let [onshow, setOnShow] = useState(1);
   return (
     <div className='pb-[10px]'>
       <Container>
 
         <div className="flex gap-5 py-3">
+
           <div className="w-6/12 cursor-pointer">
-            <img className='w-full' src={sl1} alt="" />
+            <img className='w-full' src={singleProducts.thumbnail} alt="" />
           </div>
 
           <div className="w-6/12 cursor-pointer">
-            <img className='w-full' src={ls2} alt="" />
+            <img className='w-full' src={singleProducts.thumbnail} alt="" />
           </div>
         </div>
-        <div className="flex gap-5 py-3 ">
+        {/* <div className="flex gap-5 py-3 ">
           <div className="w-6/12 cursor-pointer ">
-            <img className='w-full' src={ls2} alt="" />
+            <img className='w-full' src={singleProducts.thumbnail} alt="" />
           </div>
 
           <div className="w-6/12 cursor-pointer">
-            <img className='w-full' src={sl1} alt="" />
+            <img className='w-full' src={singleProducts.thumbnail} alt="" />
           </div>
-        </div>
+        </div> */}
 
         <div className="w-6/12">
           <div className="flex gap-2 ">
-            <div className="star flex items-center ">
-              <div className="text-[18px]" onClick={() => seoShow(!on)}>
-                {on ? <IoStar className='text-[#FFD881]' /> : <IoStar />}
-              </div>
+            <div className="flex text-[20px] text-[#FFD881]">
+              {clientRating}
+                
             </div>
-            <div className="star flex items-center  ">
-              <div className="text-[18px]" onClick={() => sewShow(!toww)}>
-                {toww ? <IoStar className='text-[#FFD881]' /> : <IoStar />}
-              </div>
-            </div>
-            <div className="star flex items-center  ">
-              <div className="text-[18px]" onClick={() => seTShow(!three)}>
-                {three ? <IoStar className='text-[#FFD881]' /> : <IoStar />}
-              </div>
-            </div>
-            <div className="star flex items-center  ">
-              <div className="text-[18px]" onClick={() => seFShow(!four)}>
-                {four ? <IoStar className='text-[#FFD881]' /> : <IoStar />}
-              </div>
-            </div>
-            <div className="star flex items-center  ">
-              <div className="text-[18px]" onClick={() => seFFShow(!five)}>
-                {five ? <IoStar className='text-[#FFD881]' /> : <IoStar />}
-              </div>
-            </div>
-
+           
             <div className="">
-              <p className='text-[#767676] font-dm text-[14px] '>1 Review</p>
+              <p className='text-[#767676] font-dm text-[14px] '>{singleProducts.rating}</p>
             </div>
           </div>
           <div className="flex gap-6 items-center border-b-1 pb-[20px] border-[#F0F0F0] py-[20px]">
-            <p className='text-[#767676] font-dm text-[16px] line-through'>$88.00</p>
-            <p className='text-[#262626] font-dm font-bold text-[20px]'>$44.00</p>
+            <p className='text-[#767676] font-dm text-[16px] line-through'>{singleProducts.discountPercentage} </p>
+            <p className='text-[#262626] font-dm font-bold text-[20px]'>{singleProducts.price}</p>
           </div>
           <div className="flex items-center gap-5 h-[60px]">
             <p className='text-[#262626] font-dm font-bold'>COLOR:</p>
@@ -102,15 +102,15 @@ const ProductDetails = () => {
                 <p className='text-[#262626] font-dm font-bold'>QUANTITY:</p>
               </div>
               <div className="flex items-center border-[1px] border-[#F0F0F0] gap-3">
-                <div className="text-[20px] w-[50px] text-center cursor-pointer" onClick={()=>setOnShow(onshow > 1 ? onshow -1 : 1)}>-</div>
+                <div className="text-[20px] w-[50px] text-center cursor-pointer" onClick={() => setOnShow(onshow > 1 ? onshow - 1 : 1)}>-</div>
                 <div className=" text-[20px] w-[50px] text-center ">{onshow}</div>
-                <div className="text-[20px] w-[50px] px-[10px] cursor-pointer" onClick={()=>setOnShow(onshow +1)}>+</div>
+                <div className="text-[20px] w-[50px] px-[10px] cursor-pointer" onClick={() => setOnShow(onshow + 1)}>+</div>
               </div>
             </div>
           </div>
           <div className="flex gap-2 py-5 border-b-[1px] border-[#F0F0F0]">
             <p className='font-dm font-bold text-[16px] text-[#262626]'>STATUS:</p>
-            <p className='font-dm text-[16px] text-[#767676]'>In stock</p>
+            <p className='font-dm text-[16px] text-[#767676]'>{singleProducts.stock} In stock</p>
           </div>
 
           <div className="flex gap-5 py-[10px] border-b-[1px] border-[#F0F0F0]">
@@ -129,7 +129,7 @@ const ProductDetails = () => {
             </div>
             {showpp &&
               <div className="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>{singleProducts.description}</p>
               </div>
             }
             <div className="border-b-[1px] border-[#F0F0F0] pb-3"></div>
@@ -161,12 +161,8 @@ const ProductDetails = () => {
           <div className="flex justify-between py-5">
             <div className="flex gap-10 items-center">
               <p className='font-dm text-[16px] text-[#262626]'>John Ford</p>
-              <div className="flex items-center text-amber-200">
-                <IoStar />
-                <IoStar />
-                <IoStar />
-                <IoStar />
-                <IoStar />
+              <div className="flex items-center text-amber-200 text-[20px]">
+                {clientRating}
               </div>
             </div>
             <div className="font-dm text-[16px] text-[#767676]">

@@ -3,8 +3,6 @@ import { ApiData } from '../Components/ContextApi';
 
 import { FaCaretDown, FaCaretUp, FaThLarge, FaThList } from 'react-icons/fa';
 import { GoDotFill } from 'react-icons/go';
-import { FiPlus } from 'react-icons/fi';
-import { LuMinus } from 'react-icons/lu';
 
 import Posts from '../Components/Posts';
 import Paginationg from '../Components/Paginationg';
@@ -88,7 +86,7 @@ const Shop = () => {
 
   console.log(active);
   let handleGrid =()=>{
-    setActive(true)
+    setActive(true) 
     
   }
   let handleList =()=>{
