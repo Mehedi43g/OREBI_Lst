@@ -1,4 +1,4 @@
-import { IoAdd, IoStar, IoStarHalfSharp, IoStarOutline, IoStarSharp } from 'react-icons/io5'
+import { IoAdd } from 'react-icons/io5'
 import Container from '../Components/Container'
 import { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
@@ -7,11 +7,18 @@ import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from 'react-icons/io'
 import { ApiData } from '../Components/ContextApi'
 
 
+import { TabItem, Tabs } from "flowbite-react";
+import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
+import { MdDashboard } from "react-icons/md";
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../Components/Slice/ProductSlic'
+
 
 const ProductDetails = () => {
   let info = useContext(ApiData)
   let productId = useParams()
-  console.log(productId);
+  let dispatch = useDispatch()
+
   
 
   let [singleProducts, setSingleProducts] = useState({})
@@ -33,14 +40,19 @@ const ProductDetails = () => {
       (<IoMdStarOutline />);
     
   })
-  console.log(clientRating);
-  
-  
+
+  let mainPrice = (singleProducts.price / 100) * singleProducts.discountPercentage;
+  let mulPrice= singleProducts.price - mainPrice;
+  console.log(singleProducts.reviews);
   
 
   let [onk, seoShowK] = useState(true);
   let [showpp, setShowpp] = useState(false);
   let [onshow, setOnShow] = useState(1);
+
+  let handleCart = () =>{
+    dispatch(addToCart("ami"))
+  }
   return (
     <div className='pb-[10px]'>
       <Container>
@@ -77,8 +89,8 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="flex gap-6 items-center border-b-1 pb-[20px] border-[#F0F0F0] py-[20px]">
-            <p className='text-[#767676] font-dm text-[16px] line-through'>{singleProducts.discountPercentage} </p>
-            <p className='text-[#262626] font-dm font-bold text-[20px]'>{singleProducts.price}</p>
+            <p className='text-[#767676] font-dm text-[16px] line-through'>$ {singleProducts.price}</p>
+            <p className='text-[#262626] font-dm font-bold text-[20px]'>$ {mulPrice.toFixed(2)}</p>
           </div>
           <div className="flex items-center gap-5 h-[60px]">
             <p className='text-[#262626] font-dm font-bold'>COLOR:</p>
@@ -115,10 +127,11 @@ const ProductDetails = () => {
 
           <div className="flex gap-5 py-[10px] border-b-[1px] border-[#F0F0F0]">
             <div className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
-              <p>Add to Wish List</p>
+              <button onClick={handleCart}>Add to Wish List</button>
             </div>
             <div className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
-              <p>Add to Cart</p>
+              
+              <button>Add to Cart</button>
             </div>
           </div>
 
@@ -146,10 +159,34 @@ const ProductDetails = () => {
             }
             <div className="border-b-[1px] border-[#F0F0F0] pb-3"></div>
           </div>
-          <div className="flex gap-5">
-            <p className='font-dm  text-[20px] text-[#767676]'>Description</p>
-            <p className='font-dm font-bold text-[20px] text-[#262626]'>Reviews (1)</p>
-
+          <div className=" gap-5">
+            <Tabs className='gap-4' aria-label="Tabs with icons" variant="underline">
+      <TabItem  active title="Description"  >
+       {singleProducts.description}
+      </TabItem>
+      <TabItem title="Reviews(1)" >
+       {singleProducts.comments}
+      {singleProducts?.reviews?.map((item)=>(
+        <div className=' gap-3'>
+          <div className="pt-[20px]">
+            {item.date}
+          </div>
+          <div className="flex gap-4">
+            <div className="">
+            {item.reviewerName}
+          </div>
+          </div>
+          <div className="flex gap-3">
+            <p>Rating:</p>
+            {item.rating}
+          </div>
+          {item.comment}
+        </div>
+      ))}
+      </TabItem>
+      
+       
+    </Tabs>
 
           </div>
         </div>

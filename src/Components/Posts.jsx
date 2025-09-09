@@ -21,7 +21,7 @@ const Posts = ({ allPage, filterCategory, active }) => {
     let filterCate = filterCategory.slice(0, 5)
     setAllfilter(filterCate);
   }, [filterCategory])
-  console.log(allFilter);
+  
 
   let handleShow = () => {
     setAllfilter(filterCategory)

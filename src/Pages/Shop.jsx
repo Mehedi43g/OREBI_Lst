@@ -20,20 +20,12 @@ const Shop = () => {
   let [FiVee, setVShow] = useState(false)
 
 
-  let [tshow, settshow] = useState(false)
+  let [tshow, settshow] = useState(true)
   let [Oogn, seOgShow] = useState(false)
-  let [tOgw, seOTgShow] = useState(false)
-  let [tHgree, setgHshow] = useState(false)
-  let [Fourg, setgfOshow] = useState(false)
-  let [FiVeeg, setgVShow] = useState(false)
 
 
   let [rrshow, setRxShow] = useState(true)
   let [srshow, setsrShow] = useState(false)
-  let [srsghow, setsgrShow] = useState(false)
-  let [srsfhow, setsfrShow] = useState(false)
-  let [srsffhow, setsffrShow] = useState(false)
-  let [srsfffhow, setsfffrShow] = useState(false)
 
   let { info } = useContext(ApiData)
   let [perPage, setPerPage] = useState(6);
@@ -43,8 +35,13 @@ const Shop = () => {
   let allPage = info.slice(firsPage, lastPage)
   let [category, setCategory] = useState([])
   let [filterCategory, setFilterCategory] = useState([])
+  
+  let [brand,setBrand] =useState([])
 
   let [active,setActive] =useState(true)
+
+  let [low,setLow] = useState()
+  let [high,setHigh] = useState()
 
   let pageNumber = []
   for (let i = 1; i <= Math.ceil(info.length / perPage); i++) {
@@ -71,7 +68,11 @@ const Shop = () => {
   }
   useEffect(() => {
     setCategory([...new Set(info.map((item) => item.category))]);
+    setBrand([...new Set(info.map((item) => item.brand))]);
+
   }, [info]);
+
+  
 
   let handleCategory = (citem) => {
     let filterItem = info.filter((item) => item.category == citem);
@@ -79,7 +80,6 @@ const Shop = () => {
     setFilterCategory(filterItem);
 
   }
-  console.log(filterCategory);
   let handelAllProduct = () => {
     setFilterCategory('')
   }
@@ -93,7 +93,17 @@ const Shop = () => {
     setActive(false)
     
   }
-  
+  let handleBrand =(bitem)=>{
+    let filterBrand =info.filter((item)=> item.brand == bitem)
+    setFilterCategory(filterBrand);
+  }
+  let handlePrice = (value) =>{
+    setLow(value.low);
+    setHigh(value.high);
+    let priceFilter = info.filter((item)=>item.price > value.low && item.price <value.high)
+    setFilterCategory(priceFilter);
+    
+  } 
   
   return (
     <>
@@ -207,72 +217,16 @@ const Shop = () => {
               {tshow ? <FaCaretUp /> : <FaCaretDown />}
             </div>
             {tshow &&
+            <>
+            {brand.map((item)=>(
               <ul className='py-3'>
-                <div onClick={() => seOgShow(!Oogn)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
-                  <li className='text-[#767676] text-[16px]'>Brand  1</li>
+                <div onClick={() => seOgShow(!Oogn)} className=" flex items-center gap-3 py-[10px]  ">
+                  <li onClick={()=>handleBrand(item)} className='text-[#767676] w-full text-[16px] border-b-[1px] font-dm  border-[#767676]'>{item}</li>
                 </div>
-                {Oogn &&
-                  <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Crown & Glory</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>SilkStrand</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>LuxeLocks</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Royal Tresses</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Opulent Mane</li>
-                  </div>
-
-                }
-
-                <div onClick={() => seOTgShow(!tOgw)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
-                  <li className='text-[#767676]'>Brand 2</li>
-                </div>
-                {tOgw &&
-                  <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Crown & Glory</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>SilkStrand</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>LuxeLocks</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Royal Tresses</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Opulent Mane</li>
-                  </div>
-
-                }
-                <div onClick={() => setgHshow(!tHgree)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
-                  <li className='text-[#767676]'>Brand 3</li>
-                </div>
-                {tHgree &&
-                  <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Crown & Glory</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>SilkStrand</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>LuxeLocks</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Royal Tresses</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Opulent Mane</li>
-                  </div>
-                }
-
-                <div onClick={() => setgfOshow(!Fourg)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
-                  <li className='text-[#767676]'>Brand 4</li>
-                </div>
-                {Fourg &&
-                  <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Crown & Glory</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>SilkStrand</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>LuxeLocks</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Royal Tresses</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Opulent Mane</li>
-                  </div>
-                }
-                <div onClick={() => setgVShow(!FiVeeg)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
-                  <li className='text-[#767676]'>Brand 5</li>
-                </div>
-                {FiVeeg &&
-                  <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Crown & Glory</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>SilkStrand</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>LuxeLocks</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Royal Tresses</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Opulent Mane</li>
-                  </div>
-                }
+                
               </ul>
+            ))}
+            </>
             }
             <div onClick={() => setRxShow(!rrshow)} className="flex items-center justify-between ">
               <h3 className=' font-dm text-[#262626] text-[20px] font-bold'>Shop by Price</h3>
@@ -281,69 +235,23 @@ const Shop = () => {
             {rrshow &&
               <ul className='py-3'>
                 <div onClick={() => setsrShow(!srshow)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
-                  <li className='text-[#767676] text-[16px]'>$0.00 - $9.99</li>
+                  <li onClick={()=> handlePrice({low:0, high:10})} className='text-[#767676] text-[16px]'>$0.00 - $9.99</li>
                 </div>
-                {srshow &&
-                  <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Crown & Glory</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>SilkStrand</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>LuxeLocks</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Royal Tresses</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Opulent Mane</li>
-                  </div>
+                <div onClick={() => setsrShow(!srshow)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
+                  <li onClick={()=> handlePrice({low:10, high:19.99})} className='text-[#767676] text-[16px]'>$10.00 - $19.99</li>
+                </div>
+                <div onClick={() => setsrShow(!srshow)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
+                  <li onClick={()=> handlePrice({low:20, high:29.99})} className='text-[#767676] text-[16px]'>$20.00 - $29.99</li>
+                </div>
+                <div onClick={() => setsrShow(!srshow)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
+                  <li onClick={()=> handlePrice({low:30, high:39.99})} className='text-[#767676] text-[16px]'>$30.00 - $39.99</li>
+                </div>
+                <div onClick={() => setsrShow(!srshow)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
+                  <li onClick={()=> handlePrice({low:40, high:69.99})} className='text-[#767676] text-[16px]'>$40.00 - $69.99</li>
+                </div>
+               
 
-                }
-
-                <div onClick={() => setsgrShow(!srsghow)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
-                  <li className='text-[#767676]'>$10.00 - $19.99</li>
-                </div>
-                {srsghow &&
-                  <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Crown & Glory</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>SilkStrand</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>LuxeLocks</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Royal Tresses</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Opulent Mane</li>
-                  </div>
-
-                }
-                <div onClick={() => setsfrShow(!srsfhow)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
-                  <li className='text-[#767676]'>$20.00 - $29.99</li>
-                </div>
-                {srsfhow &&
-                  <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Crown & Glory</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>SilkStrand</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>LuxeLocks</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Royal Tresses</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Opulent Mane</li>
-                  </div>
-                }
-
-                <div onClick={() => setsffrShow(!srsffhow)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
-                  <li className='text-[#767676]'>$30.00 - $39.99</li>
-                </div>
-                {srsffhow &&
-                  <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Crown & Glory</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>SilkStrand</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>LuxeLocks</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Royal Tresses</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Opulent Mane</li>
-                  </div>
-                }
-                <div onClick={() => setsfffrShow(!srsfffhow)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
-                  <li className='text-[#767676]'>$40.00 - $69.99</li>
-                </div>
-                {srsfffhow &&
-                  <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Crown & Glory</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>SilkStrand</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>LuxeLocks</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Royal Tresses</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Opulent Mane</li>
-                  </div>
-                }
+               
               </ul>
             }
           </div>
