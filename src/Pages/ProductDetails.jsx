@@ -106,10 +106,10 @@ const ProductDetails = () => {
               <option className='text-[#262626] font-dm font-bold' value="xl">XXL</option>
             </select>
           </div> */}
-          <div className="pb-4 border-b-[1px] border-[#F0F0F0]">
+          <div className="py-2 border-b-[1px] border-[#F0F0F0]">
             <div className="flex items-center gap-3">
               <div className="flex">
-                <p className='text-[#262626] font-dm font-bold'>QUANTITY:</p>
+                <p className='text-[#262626] font-dm text-[14px]  font-bold'>QUANTITY:</p>
               </div>
               <div className="flex items-center border-[1px] border-[#F0F0F0] gap-3">
                 <div className="text-[20px] w-[50px] text-center cursor-pointer" onClick={() => setOnShow(onshow > 1 ? onshow - 1 : 1)}>-</div>
@@ -118,24 +118,24 @@ const ProductDetails = () => {
               </div>
             </div>
           </div>
-          <div className="flex gap-2 py-5 border-b-[1px] border-[#F0F0F0]">
-            <p className='font-dm font-bold text-[16px] text-[#262626]'>STATUS:</p>
-            <p className='font-dm text-[16px] text-[#767676]'>{singleProducts.stock} In stock</p>
+          <div className="flex gap-2 py-3 border-b-[1px] border-[#F0F0F0]">
+            <p className='font-dm font-bold text-[14px] text-[#262626]'>STATUS:</p>
+            <p className='font-dm text-[14px] text-[#767676]'>{singleProducts.stock} In stock</p>
           </div>
 
           <div className="flex gap-5 py-[10px] border-b-[1px] border-[#F0F0F0]">
-            <div className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
-              <button onClick={handleCart}>Add to Wish List</button>
+            <div className="w-[150px] text-center  py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
+              <button className='text-[14px]' onClick={handleCart}>Add to Wish List</button>
             </div>
             <div className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
               
-              <button>Add to Cart</button>
+              <button className='text-[14px]'>Add to Cart</button>
             </div>
           </div>
 
           <div className="py-[10px] ">
             <div className="flex justify-between items-center gap-3 py-3 " onClick={() => setShowpp(!showpp)}>
-              <p className='font-dm font-bold text-[#262626] text-[16px]'>FEATURES  & DETAILS</p>
+              <p className='font-dm font-bold text-[#262626] text-[14px]'>FEATURES  & DETAILS</p>
               <IoAdd className='font-bold text-[#262626] text-[20px]' />
             </div>
             {showpp &&
@@ -147,7 +147,7 @@ const ProductDetails = () => {
 
 
             <div className="flex justify-between items-center gap-3 py-3" onClick={() => seoShowK(!onk)}>
-              <p className='font-dm font-bold text-[#262626] text-[16px]'>SHIPPING & RETURNS</p>
+              <p className='font-dm font-bold text-[#262626] text-[14px]'>SHIPPING & RETURNS</p>
               <IoAdd className='font-bold text-[#262626] text-[20px]' />
             </div>
             {onk &&
