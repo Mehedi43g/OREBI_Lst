@@ -99,22 +99,22 @@ if (loading) {
                             {info.map((item) => (
 
                                 <Link to="/shop">
-                                    <div className="w-full h-[400px]">
+                                    <div className="w-full px-[10px] h-[400px]">
                                         <div className=" relative h-full overflow-hidden  shadow-md  group">
                                             <img className="w-full  hover:bg-[#f0f8ff] object-cover" src={item.thumbnail} alt="" />
                                             <div className=" absolute top-4 left-3 z-5 " >
                                                 <p className=" py-[5px] px-[20px] border-[1px]  bg-[black] text-white font-bold text-[14px] font-dm ">{item.discountPercentage}%</p>
                                             </div>
-                                            <div className=" absolute right-0 bottom-20 w-[350px] bg-white hidden group-hover:block ">
+                                            <div className=" absolute right-0 bottom-25 w-[350px] bg-white hidden group-hover:block ">
                                                 <div className="">
-                                                    <div className="flex items-center gap-2 justify-end py-[10px] pr-[10px] cursor-pointer">
+                                                    <div className="flex items-center gap-2 justify-end py-[10px] pr-[10px] cursor-pointer  hover:text-red-500 transition-colors duration-300">
                                                         <p>Add to Wish List</p>
                                                         <GiSelfLove />
                                                     </div>
-                                                    <div className="flex items-center gap-2 justify-end py-[10px] pr-[10px] cursor-pointer">
+                                                    <div className="flex items-center gap-2 justify-end py-[10px] pr-[10px] cursor-pointer hover:text-blue-500 transition-colors duration-300">
                                                         <TfiReload />
                                                     </div>
-                                                    <div className="flex items-center gap-2 justify-end py-[10px] pr-[10px] cursor-pointer">
+                                                    <div className="flex items-center gap-2 justify-end py-[10px] pr-[10px] cursor-pointer hover:text-green-500 transition-colors duration-300">
                                                         <p>Add to Cart</p>
                                                         <FaShoppingCart />
                                                     </div>
