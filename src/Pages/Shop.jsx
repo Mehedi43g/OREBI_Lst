@@ -20,7 +20,7 @@ const Shop = () => {
   let [FiVee, setVShow] = useState(false)
 
 
-  let [tshow, settshow] = useState(true)
+  let [tshow, settshow] = useState(false)
   let [Oogn, seOgShow] = useState(false)
 
 
@@ -116,17 +116,17 @@ const Shop = () => {
         <div className=" flex justify-between gap-3">
           <div className="w-3/12">
             <div onClick={() => setshow(!show)} className="flex items-center justify-between">
-              <h3 className=' font-dm text-[#262626] text-[20px] font-bold'>Shop by Category</h3>
+              <h3 className=' font-dm text-[#262626] text-[18px] font-bold'>Shop by Category</h3>
               {show ? <FaCaretUp /> : <FaCaretDown />}
             </div>
             {show &&
               <div className="py-5">
                 <ul>
-                  <li onClick={handelAllProduct} className='justify-between font-dm text-[#767676] text-[16px] items-center font-bold text-center border-b-[1px] border-[#767676] py-[10px] hover:bg-[#0e58f7] hover:text-white duration-300 first-letter:uppercase'>All page</li>
+                  <li onClick={handelAllProduct} className='justify-between font-dm text-[#767676] text-[14px] items-center font-bold pl-[5px]  border-b-[1px] border-[#767676] py-[5px] hover:bg-black duration-300 first-letter:uppercase'>All page</li>
                   {category.map((item) => (
 
                     <>
-                      <li onClick={() => handleCategory(item)} className='justify-between font-dm text-[#767676] text-[16px] items-center font-bold text-center border-b-[1px] border-[#767676] py-[10px] hover:bg-black duration-300 first-letter:uppercase'>{item}</li>
+                      <li onClick={() => handleCategory(item)} className='justify-between font-dm text-[#767676] text-[14px] items-center font-bold pl-[5px]  border-b-[1px] border-[#767676] py-[5px] hover:bg-black duration-300 first-letter:uppercase'><a href="#">{item}</a></li>
 
                     </>
 
@@ -136,118 +136,119 @@ const Shop = () => {
 
             }
             <div onClick={() => setsShow(!sshow)} className="flex items-center justify-between ">
-              <h3 className=' font-dm text-[#262626] text-[20px] font-bold'>Shop by Color</h3>
+              <h3 className=' font-dm text-[#262626] text-[18px] font-bold'>Shop by Color</h3>
               {sshow ? <FaCaretUp /> : <FaCaretDown />}
             </div>
             {sshow &&
               <ul className='py-3'>
                 <div onClick={() => seOShow(!Oon)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
                   <GoDotFill className='text-black' />
-                  <li className='text-[#767676] text-[16px]'>Color 1</li>
+                  <li className='text-[#767676] text-[14px]'>Color 1</li>
                 </div>
                 {Oon &&
                   <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shirt</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Jeans</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Cap</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shoes</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>T-Shirt</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shirt</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Jeans</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Cap</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shoes</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>T-Shirt</li>
                   </div>
 
                 }
 
                 <div onClick={() => seOTShow(!tOw)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
                   <GoDotFill className='text-[#FF8686]' />
-                  <li className='text-[#767676]'>Color 2</li>
+                  <li className='text-[#767676] text-[14px]'>Color 2</li>
                 </div>
                 {tOw &&
                   <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shirt</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Jeans</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Cap</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shoes</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>T-Shirt</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shirt</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Jeans</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Cap</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shoes</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>T-Shirt</li>
                   </div>
 
                 }
                 <div onClick={() => setHshow(!tHree)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
                   <GoDotFill className='text-[#7ED321]' />
-                  <li className='text-[#767676]'>Color 3</li>
+                  <li className='text-[#767676] text-[14px]'>Color 3</li>
                 </div>
                 {tHree &&
                   <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shirt</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Jeans</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Cap</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shoes</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>T-Shirt</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shirt</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Jeans</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Cap</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shoes</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>T-Shirt</li>
                   </div>
                 }
 
                 <div onClick={() => setfOshow(!Four)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
                   <GoDotFill className='text-[#767676]' />
-                  <li className='text-[#767676]'>Color 4</li>
+                  <li className='text-[#767676] text-[14px]'>Color 4</li>
                 </div>
                 {Four &&
                   <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shirt</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Jeans</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Cap</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shoes</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>T-Shirt</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shirt</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Jeans</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Cap</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shoes</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>T-Shirt</li>
                   </div>
                 }
                 <div onClick={() => setVShow(!FiVee)} className=" flex items-center gap-3 py-[10px] font-dm border-b-[1px] border-[#767676]">
                   <GoDotFill className='text-[#15CBA5]' />
-                  <li className='text-[#767676]'>Color 5</li>
+                  <li className='text-[#767676] text-[14px]'>Color 5</li>
                 </div>
                 {FiVee &&
                   <div className="">
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shirt</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Jeans</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Cap</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shoes</li>
-                    <li className='text-[#767676] text-[16px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>T-Shirt</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shirt</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Jeans</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Cap</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>Shoes</li>
+                    <li className='text-[#767676] text-[14px] font-bold text-center py-[10px] border-b-[1px] border-[#767676]  hover:bg-black duration-300'>T-Shirt</li>
                   </div>
                 }
               </ul>
             }
             <div onClick={() => settshow(!tshow)} className="flex items-center justify-between ">
-              <h3 className=' font-dm text-[#262626] text-[20px] font-bold'>Shop by Brand</h3>
+              <h3 className=' font-dm text-[#262626] text-[18px] font-bold'>Shop by Brand</h3>
               {tshow ? <FaCaretUp /> : <FaCaretDown />}
             </div>
             {tshow &&
             <>
             {brand.map((item)=>(
-              <ul className='py-3'>
+              <ul className='py-1  '>
                 <div onClick={() => seOgShow(!Oogn)} className=" flex items-center gap-3 py-[10px]  ">
-                  <li onClick={()=>handleBrand(item)} className='text-[#767676] w-full text-[16px] border-b-[1px] font-dm  border-[#767676]'>{item}</li>
+                  <li onClick={()=>handleBrand(item)} className={`text-[#767676] w-full text-[14px] font-dm ${item ? "border-b border-[#767676]" : "border-0"}`}>
+                    <a href="#">{item}</a>
+                  </li>
                 </div>
-                
               </ul>
             ))}
             </>
             }
             <div onClick={() => setRxShow(!rrshow)} className="flex items-center justify-between ">
-              <h3 className=' font-dm text-[#262626] text-[20px] font-bold'>Shop by Price</h3>
+              <h3 className=' font-dm text-[#262626] text-[18px] font-bold'>Shop by Price</h3>
               {rrshow ? <FaCaretUp /> : <FaCaretDown />}
             </div>
             {rrshow &&
               <ul className='py-3'>
                 <div onClick={() => setsrShow(!srshow)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
-                  <li onClick={()=> handlePrice({low:0, high:10})} className='text-[#767676] text-[16px]'>$0.00 - $9.99</li>
+                  <li onClick={()=> handlePrice({low:0, high:10})} className='text-[#767676] text-[14px]'>$0.00 - $9.99</li>
                 </div>
                 <div onClick={() => setsrShow(!srshow)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
-                  <li onClick={()=> handlePrice({low:10, high:19.99})} className='text-[#767676] text-[16px]'>$10.00 - $19.99</li>
+                  <li onClick={()=> handlePrice({low:10, high:19.99})} className='text-[#767676] text-[14px]'>$10.00 - $19.99</li>
                 </div>
                 <div onClick={() => setsrShow(!srshow)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
-                  <li onClick={()=> handlePrice({low:20, high:29.99})} className='text-[#767676] text-[16px]'>$20.00 - $29.99</li>
+                  <li onClick={()=> handlePrice({low:20, high:29.99})} className='text-[#767676] text-[14px]'>$20.00 - $29.99</li>
                 </div>
                 <div onClick={() => setsrShow(!srshow)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
-                  <li onClick={()=> handlePrice({low:30, high:39.99})} className='text-[#767676] text-[16px]'>$30.00 - $39.99</li>
+                  <li onClick={()=> handlePrice({low:30, high:39.99})} className='text-[#767676] text-[14px]'>$30.00 - $39.99</li>
                 </div>
                 <div onClick={() => setsrShow(!srshow)} className=" flex items-center gap-3 py-[10px]  font-dm border-b-[1px] border-[#767676]">
-                  <li onClick={()=> handlePrice({low:40, high:69.99})} className='text-[#767676] text-[16px]'>$40.00 - $69.99</li>
+                  <li onClick={()=> handlePrice({low:40, high:69.99})} className='text-[#767676] text-[14px]'>$40.00 - $69.99</li>
                 </div>
                
 
@@ -268,16 +269,16 @@ const Shop = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex ">
                 <div className="droupdown flex gap-2">
                   <div className="flex items-center gap-2">
                     <div className="text">
-                      <p className='text-[#767676] text-[16px] font-dm'>Sort by:</p>
+                      <p className='text-[#767676] text-[14px] font-dm'>Sort by:</p>
                     </div>
                     <div className="droup">
                       <div className="w-44">
                         <select
-                          className=" w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm"
+                          className=" w-[70%] rounded-md border border-gray-300 bg-white px-2 py-2 text-sm shadow-sm"
                         >
                           <option>Category 1</option>
                           <option>Category 2</option>
@@ -292,12 +293,12 @@ const Shop = () => {
                 </div>
                  {!filterCategory.length && (
                 <div className="flex gap-1 items-center">
-                  <p className='text-[#767676] text-[16px] font-dm'>Show:</p>
+                  <p className='text-[#767676] text-[14px] font-dm'>Show:</p>
                   <div className="  px-[10px] ">
                     <div className="w-24">
                      
                         <select onChange={handlepageNumber}
-                        name="" id="" className='border-[1px] border-[#0059ff7c] py-2 roudned-[5px] pl-20 pr-1 shadow-md'  >
+                        name="" id="" className=" w-[70%] rounded-md border border-gray-300 bg-white px-2 py-2 text-sm shadow-sm"  >
                         <option value="6">6</option>
                         <option value="12">12</option>
                         <option value="18">18</option>

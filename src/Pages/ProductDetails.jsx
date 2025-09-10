@@ -8,8 +8,6 @@ import { ApiData } from '../Components/ContextApi'
 
 
 import { TabItem, Tabs } from "flowbite-react";
-import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
-import { MdDashboard } from "react-icons/md";
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../Components/Slice/ProductSlic'
 
@@ -20,7 +18,7 @@ const ProductDetails = () => {
   let dispatch = useDispatch()
 
   
-
+  
   let [singleProducts, setSingleProducts] = useState({})
 
   let singleProduct = () => {
@@ -57,13 +55,13 @@ const ProductDetails = () => {
     <div className='pb-[10px]'>
       <Container>
 
-        <div className="flex gap-5 py-3">
+        <div className="flex justify-center gap-5 py-3">
 
-          <div className="w-6/12 cursor-pointer">
+          <div className="w-3/12 cursor-pointer">
             <img className='w-full' src={singleProducts.thumbnail} alt="" />
           </div>
 
-          <div className="w-6/12 cursor-pointer">
+          <div className="w-3/12 cursor-pointer">
             <img className='w-full' src={singleProducts.thumbnail} alt="" />
           </div>
         </div>
@@ -92,7 +90,7 @@ const ProductDetails = () => {
             <p className='text-[#767676] font-dm text-[16px] line-through'>$ {singleProducts.price}</p>
             <p className='text-[#262626] font-dm font-bold text-[20px]'>$ {mulPrice.toFixed(2)}</p>
           </div>
-          <div className="flex items-center gap-5 h-[60px]">
+          {/* <div className="flex items-center gap-5 h-[60px]">
             <p className='text-[#262626] font-dm font-bold'>COLOR:</p>
             <div className="w-[10px] p-[10px] hover:scale-150 bg-[#767676] rounded-full duration-300 cursor-pointer"></div>
             <div className="w-[10px] p-[10px] hover:scale-150 bg-[#FF8686] rounded-full duration-300 cursor-pointer"></div>
@@ -107,7 +105,7 @@ const ProductDetails = () => {
               <option className='text-[#262626] font-dm font-bold' value="xl">XL</option>
               <option className='text-[#262626] font-dm font-bold' value="xl">XXL</option>
             </select>
-          </div>
+          </div> */}
           <div className="pb-4 border-b-[1px] border-[#F0F0F0]">
             <div className="flex items-center gap-3">
               <div className="flex">
