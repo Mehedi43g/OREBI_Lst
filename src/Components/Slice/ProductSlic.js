@@ -14,7 +14,6 @@ export const ProductSlic = createSlice({
       if (findProduct !== -1) {
         state.cartItem[findProduct].qun +=1;
       } else {
-        console.log("ami same");
         state.cartItem = [{...action.payload, qun:1}];
 
       }

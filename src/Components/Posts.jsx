@@ -65,11 +65,7 @@ const Posts = ({ allPage, filterCategory, active }) => {
               <div className="h-[400px]" key={item.id}>
                 <div className="relative h-full overflow-hidden shadow-md group">
                   <Link to={`/Shop/${item.id}`}>
-                    <img
-                      className="w-full cursor-pointer object-cover hover:bg-[#f0f8ff]"
-                      src={item.thumbnail}
-                      alt=""
-                    />
+                    <a href="#"><img className="w-full cursor-pointer object-cover hover:bg-[#f0f8ff]" src={item.thumbnail} alt=""/></a>
                   </Link>
                   <div className="absolute top-4 left-3 z-5">
                     <p className="py-[5px] px-[20px] border bg-black text-white font-bold text-[14px] font-dm">
@@ -135,11 +131,7 @@ const Posts = ({ allPage, filterCategory, active }) => {
               <div className="h-[300px]" key={item.id}>
                     <div className="relative h-full overflow-hidden shadow-md group flex items-center">
                       <Link to={`/Shop/${item.id}`}>
-                        <img
-                          className="w-[80%] cursor-pointer object-cover "
-                          src={item.thumbnail}
-                          alt=""
-                        />
+                        <a href="#"><img className="w-full cursor-pointer object-cover hover:bg-[#f0f8ff]" src={item.thumbnail} alt=""/></a>
                       </Link>
                       <div className="absolute top-4 left-3 z-5">
                         <p className="py-[5px] px-[20px] border bg-black text-white font-bold text-[14px] font-dm">
@@ -219,11 +211,7 @@ const Posts = ({ allPage, filterCategory, active }) => {
                   <div className="h-[400px]" key={item.id}>
                     <div className="relative h-full overflow-hidden shadow-md group">
                       <Link to={`/Shop/${item.id}`}>
-                        <img
-                          className="w-full cursor-pointer object-cover hover:bg-[#f0f8ff]"
-                          src={item.thumbnail}
-                          alt=""
-                        />
+                        <a href="#"><img className="w-full cursor-pointer object-cover hover:bg-[#f0f8ff]" src={item.thumbnail} alt=""/></a>
                       </Link>
                       <div className="absolute top-4 left-3 z-5">
                         <p className="py-[5px] px-[20px] border bg-black text-white font-bold text-[10px] font-dm">
@@ -270,11 +258,7 @@ const Posts = ({ allPage, filterCategory, active }) => {
                   <div className="h-[300px]" key={item.id}>
                     <div className="relative h-full overflow-hidden shadow-md group flex items-center">
                       <Link to={`/Shop/${item.id}`}>
-                        <img
-                          className="w-[80%] cursor-pointer object-cover "
-                          src={item.thumbnail}
-                          alt=""
-                        />
+                        <a href="#"><img className="w-full cursor-pointer object-cover hover:bg-[#f0f8ff]" src={item.thumbnail} alt=""/></a>
                       </Link>
                       <div className="absolute top-4 left-3 z-5">
                         <p className="py-[5px] px-[20px] border bg-black text-white font-bold text-[14px] font-dm">

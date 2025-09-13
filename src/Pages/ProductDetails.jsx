@@ -17,8 +17,8 @@ const ProductDetails = () => {
   let productId = useParams()
   let dispatch = useDispatch()
 
-  
-  
+
+
   let [singleProducts, setSingleProducts] = useState({})
 
   let singleProduct = () => {
@@ -29,28 +29,29 @@ const ProductDetails = () => {
   useEffect(() => {
     singleProduct();
   }, []);
-  
+
   console.log(info);
-  
-  let clientRating = Array.from({length:5},(_,index)=>{
-    let number =index + 0.5
-    return singleProducts.rating > index + 1 ? ( <IoMdStar /> ) : singleProducts.rating > number ? <IoMdStarHalf /> :
+
+  let clientRating = Array.from({ length: 5 }, (_, index) => {
+    let number = index + 0.5
+    return singleProducts.rating > index + 1 ? (<IoMdStar />) : singleProducts.rating > number ? <IoMdStarHalf /> :
       (<IoMdStarOutline />);
-    
+
   })
 
+
   let mainPrice = (singleProducts.price / 100) * singleProducts.discountPercentage;
-  let mulPrice= singleProducts.price - mainPrice;
+  let mulPrice = singleProducts.price - mainPrice;
   console.log(singleProducts.reviews);
-  
+
 
   let [onk, seoShowK] = useState(true);
   let [showpp, setShowpp] = useState(false);
   let [onshow, setOnShow] = useState(1);
 
-  let handleCart = (item) =>{
-    dispatch(addToCart({...item,qun:1}));
-    
+  let handleCart = (item) => {
+    dispatch(addToCart({ ...item, qun: 1 }));
+
   }
   return (
     <div className='pb-[10px]'>
@@ -66,23 +67,15 @@ const ProductDetails = () => {
             <img className='w-full' src={singleProducts.thumbnail} alt="" />
           </div>
         </div>
-        {/* <div className="flex gap-5 py-3 ">
-          <div className="w-6/12 cursor-pointer ">
-            <img className='w-full' src={singleProducts.thumbnail} alt="" />
-          </div>
 
-          <div className="w-6/12 cursor-pointer">
-            <img className='w-full' src={singleProducts.thumbnail} alt="" />
-          </div>
-        </div> */}
 
         <div className="w-6/12">
           <div className="flex gap-2 ">
             <div className="flex text-[20px] text-[#FFD881]">
               {clientRating}
-                
+
             </div>
-           
+
             <div className="">
               <p className='text-[#767676] font-dm text-[14px] '>{singleProducts.rating}</p>
             </div>
@@ -91,22 +84,6 @@ const ProductDetails = () => {
             <p className='text-[#767676] font-dm text-[16px] line-through'>$ {singleProducts.price}</p>
             <p className='text-[#262626] font-dm font-bold text-[20px]'>$ {mulPrice.toFixed(2)}</p>
           </div>
-          {/* <div className="flex items-center gap-5 h-[60px]">
-            <p className='text-[#262626] font-dm font-bold'>COLOR:</p>
-            <div className="w-[10px] p-[10px] hover:scale-150 bg-[#767676] rounded-full duration-300 cursor-pointer"></div>
-            <div className="w-[10px] p-[10px] hover:scale-150 bg-[#FF8686] rounded-full duration-300 cursor-pointer"></div>
-            <div className="w-[10px] p-[10px] hover:scale-150 bg-[#7ED321] rounded-full duration-300 cursor-pointer"></div>
-            <div className="w-[10px] p-[10px] hover:scale-150 bg-[#B6B6B6] rounded-full duration-300 cursor-pointer"></div>
-            <div className="w-[10px] p-[10px] hover:scale-150 bg-[#15CBA5] rounded-full duration-300 cursor-pointer"></div>
-          </div>
-          <div className="flex items-center py-[20px] gap-3">
-            <p className='text-[#262626] font-dm font-bold'>SIZE :</p>
-            <select className=' border-1 px-[30px]' name="" id="">
-              <option className='text-[#262626] font-dm font-bold' value="S">S</option>
-              <option className='text-[#262626] font-dm font-bold' value="xl">XL</option>
-              <option className='text-[#262626] font-dm font-bold' value="xl">XXL</option>
-            </select>
-          </div> */}
           <div className="py-2 border-b-[1px] border-[#F0F0F0]">
             <div className="flex items-center gap-3">
               <div className="flex">
@@ -128,9 +105,9 @@ const ProductDetails = () => {
             <div className="w-[150px] text-center  py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
               <button className='text-[14px]' >Add to Wish List</button>
             </div>
-            <div onClick={()=>handleCart(singleProducts)} className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
-              
-              <button  className='text-[14px]'>Add to Cart</button>
+            <div onClick={() => handleCart(singleProducts)} className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
+
+              <button className='text-[14px]'>Add to Cart</button>
             </div>
           </div>
 
@@ -159,33 +136,53 @@ const ProductDetails = () => {
             <div className="border-b-[1px] border-[#F0F0F0] pb-3"></div>
           </div>
           <div className=" gap-5">
-            <Tabs className='gap-4' aria-label="Tabs with icons" variant="underline">
-      <TabItem  active title="Description"  >
-       {singleProducts.description}
-      </TabItem>
-      <TabItem title="Reviews(1)" >
-       {singleProducts.comments}
-      {singleProducts?.reviews?.map((item)=>(
-        <div className=' gap-3'>
-          <div className="pt-[20px]">
-            {item.date}
-          </div>
-          <div className="flex gap-4">
-            <div className="">
-            {item.reviewerName}
-          </div>
-          </div>
-          <div className="flex gap-3">
-            <p>Rating:</p>
-            {item.rating}
-          </div>
-          {item.comment}
-        </div>
-      ))}
-      </TabItem>
-      
-       
-    </Tabs>
+            
+            <Tabs className="gap-4" aria-label="Tabs with icons" variant="underline">
+
+              <TabItem active title="Description">
+                <p className="text-gray-700 leading-relaxed">{singleProducts?.description}</p>
+              </TabItem>
+              <TabItem title={`Reviews (${singleProducts?.reviews?.length || 0})`}>
+                {singleProducts?.reviews?.length > 0 ? (
+                  <div className="space-y-6">
+                    {singleProducts.reviews.map((item, index) => {
+                      const reviewStars = Array.from({ length: 5 }, (_, starIndex) => {
+                        const number = starIndex + 0.5;
+                        return item.rating > starIndex + 1 ? (
+                          <IoMdStar key={starIndex} className="text-yellow-400 text-[18px]" />
+                        ) : item.rating > number ? (
+                          <IoMdStarHalf key={starIndex} className="text-yellow-400 text-[18px]" />
+                        ) : (
+                          <IoMdStarOutline key={starIndex} className="text-yellow-400 text-[18px]" />
+                        );
+                      });
+
+                      return (
+                        <div
+                          key={index}
+                          className="p-4 rounded-xl shadow-md border border-gray-100 bg-white hover:shadow-lg transition duration-300"
+                        >
+                          <div className="flex justify-between">
+                            <div className="font-semibold text-sm mb-2">{item.reviewerName}</div>
+                            <div className="text-xs text-gray-400 mb-1">
+                              {new Date(item.date).toLocaleDateString("en-US", { day: "2-digit", month: "short", year: "numeric", })}
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="text-gray-600 text-sm font-medium">Rating:</span>
+                            <div className="flex gap-1">{reviewStars}</div>
+                          </div>
+                          <p className="text-gray-700 text-sm">{item.comment}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-gray-500 text-center py-6">No reviews yet. Be the first to review!</p>
+                )}
+              </TabItem>
+            </Tabs>
+
 
           </div>
         </div>
