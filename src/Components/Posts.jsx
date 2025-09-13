@@ -55,7 +55,7 @@ const Posts = ({ allPage, filterCategory, active }) => {
   }
 
   return (
-    <div className="">
+    <div className="select-none">
       {allFilter.length > 0 ? (
         <>
         <div className="">
@@ -124,7 +124,8 @@ const Posts = ({ allPage, filterCategory, active }) => {
               </div>
             )}
           </div>
-        </div>: 
+        </div>
+        : 
         <div className="">
           <div className="">
             {allFilter.map((item) => (

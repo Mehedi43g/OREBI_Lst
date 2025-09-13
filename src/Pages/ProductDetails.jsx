@@ -54,7 +54,7 @@ const ProductDetails = () => {
 
   }
   return (
-    <div className='pb-[10px]'>
+    <div className='pb-[10px] select-none'>
       <Container>
 
         <div className="flex justify-center gap-5 py-3">
