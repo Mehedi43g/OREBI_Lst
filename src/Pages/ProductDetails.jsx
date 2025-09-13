@@ -48,8 +48,9 @@ const ProductDetails = () => {
   let [showpp, setShowpp] = useState(false);
   let [onshow, setOnShow] = useState(1);
 
-  let handleCart = () =>{
-    dispatch(addToCart("ami"))
+  let handleCart = (item) =>{
+    dispatch(addToCart({...item,qun:1}));
+    
   }
   return (
     <div className='pb-[10px]'>
@@ -125,11 +126,11 @@ const ProductDetails = () => {
 
           <div className="flex gap-5 py-[10px] border-b-[1px] border-[#F0F0F0]">
             <div className="w-[150px] text-center  py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
-              <button className='text-[14px]' onClick={handleCart}>Add to Wish List</button>
+              <button className='text-[14px]' >Add to Wish List</button>
             </div>
-            <div className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
+            <div onClick={()=>handleCart(singleProducts)} className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
               
-              <button className='text-[14px]'>Add to Cart</button>
+              <button  className='text-[14px]'>Add to Cart</button>
             </div>
           </div>
 
