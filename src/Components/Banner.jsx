@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 
 const Banner = () => {
 
-  let data = useSelector((state)=>state.product.price)
-  console.log(data);
+  let result = useSelector((state)=>state.product.products)
+  console.log(result);
   
 
 
@@ -50,6 +50,7 @@ const Banner = () => {
   return (
     <>
     <section className="">
+      <h3>{result}</h3>
       <Slider {...settings}>
         <div className="w-full">
           <img src={banimg} alt="" />

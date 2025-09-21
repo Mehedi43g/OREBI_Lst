@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import Container from '../Components/Container'
+import { useDispatch } from 'react-redux'
+import { allproduct } from '../Components/Slice/ProductSlic'
 
 const Contacts = () => {
+  let dispatch = useDispatch()
   let [text, settext] = useState('')
   let handleInput = (e)=>{
     settext(e.target.value);
@@ -9,7 +12,7 @@ const Contacts = () => {
   }
 
   let handleSubmit = ()=>{
-    alert(text)
+    dispatch(allproduct(text))
   }
   return (
     <div>
