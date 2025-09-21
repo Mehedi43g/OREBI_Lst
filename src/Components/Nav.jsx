@@ -1,4 +1,4 @@
-import { HiMiniXMark, HiOutlineBars3BottomLeft } from "react-icons/hi2"
+import { HiMiniXMark } from "react-icons/hi2"
 import Container from "./Container"
 import { FaBars, FaCaretRight, FaSortDown, FaUser } from "react-icons/fa"
 import { useEffect, useRef, useState } from "react"
@@ -8,33 +8,26 @@ import bag from "../assets/bagg.png"
 
 
 const Nav = () => {
-   let cateRaf = useRef()
    let cateRof = useRef()
    let cateRoff = useRef()
-   let [show, setShow] = useState(false)
    let [accShow, setAccShow] = useState(false)
    let [roffShow, setroffShow] = useState(false)
-   useEffect(() => {
-      document.addEventListener("click", (e) => {
-         console.log(cateRaf.current.contains(e.target) == true);
-         if (cateRaf.current.contains(e.target) == true) {
-            setShow(!show)
-         } else {
-            setShow(false)
-         }
-         if (cateRof.current.contains(e.target) == true) {
-            setAccShow(!accShow)
-         } else {
-            setAccShow(false)
-         }
-         if (cateRoff.current.contains(e.target) == true) {
-            setroffShow(!roffShow)
-         } else {
-            setroffShow(false)
-         }
-      })
 
-   })
+  let [show, setShow] = useState()
+  let cateRaf = useRef()
+  useEffect(() => {
+    document.addEventListener("click", (e) => {
+      console.log(cateRaf.current.contains(e.target) == true);
+      if (cateRaf.current.contains(e.target) == true) {
+        setShow(true)
+
+
+      } else {
+        setShow(false)
+      }
+
+    })
+  }, [show])
 
    return (
       <section className="bg-[#F5F5F3]">

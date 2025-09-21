@@ -3,8 +3,15 @@ import banimg from "../assets/banimg.png"
 import Container from "./Container";
 import { FaCarSide } from "react-icons/fa";
 import { SlReload } from "react-icons/sl";
+import { useSelector } from "react-redux";
 
 const Banner = () => {
+
+  let data = useSelector((state)=>state.product.price)
+  console.log(data);
+  
+
+
   const settings = {
     dots: true,
     arrows: false,

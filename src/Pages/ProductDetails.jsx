@@ -9,7 +9,8 @@ import { ApiData } from '../Components/ContextApi'
 
 import { TabItem, Tabs } from "flowbite-react";
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../Components/Slice/ProductSlic'
+// import { addToCart } from '../Components/Slice/productSlic'
+
 
 
 const ProductDetails = () => {
@@ -50,7 +51,7 @@ const ProductDetails = () => {
   let [onshow, setOnShow] = useState(1);
 
   let handleCart = (item) => {
-    dispatch(addToCart({ ...item, qun: 1 }));
+    // dispatch(addToCart({ ...item, qun: 1 }));
 
   }
   return (

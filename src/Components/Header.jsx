@@ -29,13 +29,10 @@ const Header = () => {
                     <div className="w-1/12 lg:hidden absolute top-0 right-0 pt-[20px]" onClick={() => setMenu(!menu)}>
                         {menu
                             ?
-                             
                             <FaBars />
                             :
                             <GiCrossMark />
                              }
-
-
                     </div>
                 </div>
             </Container>

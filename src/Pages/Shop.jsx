@@ -7,8 +7,14 @@ import { GoDotFill } from 'react-icons/go';
 import Posts from '../Components/Posts';
 import Paginationg from '../Components/Paginationg';
 import Container from '../Components/Container';
+import { useSelector } from 'react-redux';
 
 const Shop = () => {
+let data = useSelector ((state)=>state.product.price)
+  console.log(data);
+
+
+
   let [show, setshow] = useState(true)
 
 
