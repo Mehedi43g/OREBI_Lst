@@ -7,10 +7,6 @@ import { useSelector } from "react-redux";
 
 const Banner = () => {
 
-  let result = useSelector((state)=>state.product.products)
-  console.log(result);
-  
-
 
   const settings = {
     dots: true,
@@ -50,7 +46,6 @@ const Banner = () => {
   return (
     <>
     <section className="">
-      <h3>{result}</h3>
       <Slider {...settings}>
         <div className="w-full">
           <img src={banimg} alt="" />
