@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 const Shop = () => {
 let data = useSelector ((state)=>state.product.price)
-  console.log(data);
+console.log(data);
 
 
 
@@ -34,6 +34,9 @@ let data = useSelector ((state)=>state.product.price)
   let [srshow, setsrShow] = useState(false)
 
   let { info } = useContext(ApiData)
+
+   //............... shop page ar head............\\
+
   let [perPage, setPerPage] = useState(6);
   let [currentPage, setCurrentPage] = useState(1);
   let lastPage = perPage * currentPage
@@ -41,13 +44,11 @@ let data = useSelector ((state)=>state.product.price)
   let allPage = info.slice(firsPage, lastPage)
   let [category, setCategory] = useState([])
   let [filterCategory, setFilterCategory] = useState([])
-  
+
+  //............... shop page ar head............\\
+
   let [brand,setBrand] =useState([])
-
   let [active,setActive] =useState(true)
-
-  let [low,setLow] = useState()
-  let [high,setHigh] = useState()
 
   let pageNumber = []
   for (let i = 1; i <= Math.ceil(info.length / perPage); i++) {

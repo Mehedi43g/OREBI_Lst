@@ -9,13 +9,9 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Posts = ({ allPage, filterCategory, active }) => {
+
   let [allFilter, setAllfilter] = useState([])
   let [showAll, setShowAll] = useState(true);
-
-
-
-
-
 
   useEffect(() => {
     let filterCate = filterCategory.slice(0, 5)
@@ -33,8 +29,6 @@ const Posts = ({ allPage, filterCategory, active }) => {
     setAllfilter(filterCate);
     setShowAll(true)
   }
-
-
 
 
   let { loading } = useContext(ApiData)
@@ -290,6 +284,7 @@ const Posts = ({ allPage, filterCategory, active }) => {
 
                       <div className=" justify-between pl-[20px] pr-[20px]  ">
                         <div>
+                          
                           <p className="py-[10px] font-bold font-dm text-[16px] text-[#262626]">
                             {item.title}
                           </p>
