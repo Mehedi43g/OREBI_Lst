@@ -6,6 +6,7 @@ import { MdPeople, MdSearch } from 'react-icons/md'
 import { useEffect, useRef, useState } from 'react'
 import { FaCartShopping } from 'react-icons/fa6'
 import { RxCross2 } from 'react-icons/rx'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   let [showN, setShowN] = useState()
@@ -64,11 +65,27 @@ const Header = () => {
             </div>
             <div className="w-4/12">
               <ul className='flex gap-2'>
+                <Link to="/">
                 <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>Home</li>
+                
+                </Link>
+                
+                <Link to="/shop">
                 <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>Shop</li>
+                
+                </Link>
+                <Link to="/about">
+                
                 <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>About</li>
+                </Link>
+                <Link to="/contacts">
+                
                 <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[70px] duration-300'>Contacts</li>
+                </Link>
+                <Link to= "/journal">
+                
                 <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>Journal</li>
+                </Link>
               </ul>
             </div>
             <div className="w-3/12">
