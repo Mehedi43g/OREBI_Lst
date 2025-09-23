@@ -268,10 +268,10 @@ console.log(data);
             <div className="flex justify-between">
               <div className="icons ">
                 <div className="flex gap-3">
-                  <div onClick={handleGrid} className={`${active ? "p-[5px] text-black bg-orange-400 border-[1px] border-[#737373]" : "p-[5px] text-black border-[1px] border-[#737373]"  } `}>
+                  <div onClick={handleGrid} className={`${active ? "p-[5px] text-black bg-[#a7a6a683] border-[1px] border-[#737373]" : "p-[5px] text-black border-[1px] border-[#737373]"  } `}>
                     <FaThLarge  />
                   </div>
-                  <div onClick={handleList} className={`${active ? "p-[5px] text-black border-[1px] border-[#737373]" : "p-[5px] text-black bg-orange-400 border-[1px] border-[#737373]"}`}>
+                  <div onClick={handleList} className={`${active ? "p-[5px] text-black border-[1px] border-[#737373]" : "p-[5px] text-black bg-[#a7a6a683] border-[1px] border-[#737373]"}`}>
                     <FaThList />
                   </div>
                 </div>

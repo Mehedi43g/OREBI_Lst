@@ -6,13 +6,13 @@ import { useParams } from 'react-router-dom'
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from 'react-icons/io'
 import { ApiData } from '../Components/ContextApi'
 
-
 import { TabItem, Tabs } from "flowbite-react";
 import { useDispatch } from 'react-redux'
+import { addToCart } from '../Components/Slice/ProductSlic'
 
 
 
-// import { addToCart } from '../Components/Slice/productSlic'
+
 
 
 
@@ -53,10 +53,15 @@ const ProductDetails = () => {
   let [showpp, setShowpp] = useState(false);
   let [onshow, setOnShow] = useState(1);
 
-  let handleCart = (item) => {
-    // dispatch(addToCart({ ...item, qun: 1 }));
-
+  // function handleCart() {
+  //   alert("add to card succesfull")
+  // }
+  
+  let handleAddtoCartd = () => {
+    // alert("ran hoisa ")
+    // dispatch(addToCart({singleProducts }))
   }
+
   return (
     <div className='pb-[10px] select-none'>
       <Container>
@@ -64,7 +69,7 @@ const ProductDetails = () => {
         <div className="flex justify-center gap-5 py-3">
 
           <div className="w-3/12 cursor-pointer">
-            <img className='w-full' src={singleProducts.thumbnail} alt="" />
+            <img className='w-full ' src={singleProducts.thumbnail} alt="" />
           </div>
 
           <div className="w-3/12 cursor-pointer">
@@ -109,7 +114,7 @@ const ProductDetails = () => {
             <div className="w-[150px] text-center  py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
               <button className='text-[14px]' >Add to Wish List</button>
             </div>
-            <div onClick={() => handleCart(singleProducts)} className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
+            <div onClick={()=>handleAddtoCartd()} className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
 
               <button className='text-[14px]'>Add to Cart</button>
             </div>
@@ -140,7 +145,7 @@ const ProductDetails = () => {
             <div className="border-b-[1px] border-[#F0F0F0] pb-3"></div>
           </div>
           <div className=" gap-5">
-            
+
             <Tabs className="gap-4" aria-label="Tabs with icons" variant="underline">
 
               <TabItem active title="Description">
