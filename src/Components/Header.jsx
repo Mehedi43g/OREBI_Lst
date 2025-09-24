@@ -1,5 +1,4 @@
 import Container from './Container'
-import logo from '../assets/logo.png'
 import { FaAngleRight, FaBars } from 'react-icons/fa'
 import { CiSearch } from 'react-icons/ci'
 import { MdPeople, MdSearch } from 'react-icons/md'
@@ -7,6 +6,8 @@ import { useEffect, useRef, useState } from 'react'
 import { FaCartShopping } from 'react-icons/fa6'
 import { RxCross2 } from 'react-icons/rx'
 import { Link } from 'react-router-dom'
+
+import logo from '../assets/Logo.png'
 
 const Header = () => {
   let [showN, setShowN] = useState()
