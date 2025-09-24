@@ -59,7 +59,7 @@ const ProductDetails = () => {
   
   let handleAddtoCartd = (item) => {
     // alert("ran hoisa ")
-    dispatch(addToCart({...item,qun:2 }))
+    dispatch(addToCart({...item,qun:1 }))
   }
 
   return (
