@@ -11,10 +11,11 @@ export const productSlic = createSlice({
      addToCart:( state,action)=>{
     let findProduct = state.cartItem.findIndex((item)=>item.id == action.payload.id)
     
-    if(findProduct !== -1){
-      state.cartItem[findProduct].qun += 1;
+    if(findProduct != -1){
+      state.cartItem[findProduct].qun +=1;
+      
     }else{
-      state.cartItem = [{ ...action.payload, qun: 1}];
+      state.cartItem = [ ...state.cartItem, action.payload];
     }
    }
   }

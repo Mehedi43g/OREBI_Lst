@@ -57,9 +57,9 @@ const ProductDetails = () => {
   //   alert("add to card succesfull")
   // }
   
-  let handleAddtoCartd = () => {
+  let handleAddtoCartd = (item) => {
     // alert("ran hoisa ")
-    // dispatch(addToCart({singleProducts }))
+    dispatch(addToCart({...item,qun:2 }))
   }
 
   return (
@@ -114,7 +114,7 @@ const ProductDetails = () => {
             <div className="w-[150px] text-center  py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
               <button className='text-[14px]' >Add to Wish List</button>
             </div>
-            <div onClick={()=>handleAddtoCartd()} className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
+            <div onClick={()=>handleAddtoCartd(singleProducts)} className="w-[150px] text-center py-[10px] border-[1px] hover:bg-black hover:text-white duration-300 text-[#262626] font-dm font-bold cursor-pointer">
 
               <button className='text-[14px]'>Add to Cart</button>
             </div>
