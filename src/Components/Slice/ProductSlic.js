@@ -23,6 +23,9 @@ export const productSlic = createSlice({
     let filtercart = state.cartItem.filter((item)=>item.id !=action.payload.id)
     state.cartItem = filtercart;    
    },
+  //  QunTTpass:(state,action)=>{
+  //   let findProductQun = state.cartItem.filter((item)=>item.id == action.payload.id)
+  //  }
    
   }
 })
