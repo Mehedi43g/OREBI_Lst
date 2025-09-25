@@ -65,7 +65,6 @@ const ProductDetails = () => {
   return (
     <div className='pb-[10px] select-none'>
       <Container>
-{/* wjskjflksajfl; */}
         <div className="flex justify-center gap-5 py-3">
 
           <div className="w-3/12 cursor-pointer">

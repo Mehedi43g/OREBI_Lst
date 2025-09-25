@@ -17,11 +17,17 @@ export const productSlic = createSlice({
     }else{
       state.cartItem = [ ...state.cartItem, action.payload];
     }
-   }
+   },
+   removeCart:(state,action)=>{
+    // state.cartItem = action.payload;
+    let filtercart = state.cartItem.filter((item)=>item.id !=action.payload.id)
+    state.cartItem = filtercart;    
+   },
+   
   }
 })
 
 
-export const { addToCart } = productSlic.actions
+export const { addToCart,removeCart } = productSlic.actions
 
 export default productSlic.reducer

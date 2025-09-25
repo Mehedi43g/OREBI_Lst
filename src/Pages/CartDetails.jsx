@@ -1,8 +1,14 @@
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeCart } from "../Components/Slice/ProductSlic";
 const CartDetails = () => {
+  let dispatch = useDispatch()
     let cartData = useSelector((state)=>state.product.cartItem)
-    console.log(cartData);
+
+    let handleCartItemRemove = (item)=>{
+      dispatch(removeCart(item))
+      
+    }
     
 
   return (
@@ -60,7 +66,7 @@ const CartDetails = () => {
                     data-input-counter=""
                     className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 "
                     placeholder=""
-                    defaultValue={1}
+                    defaultValue={item.qun}
                     required=""
                   />
                   <button
@@ -100,7 +106,7 @@ const CartDetails = () => {
                  {item.title}
                 </a>
                 <div className="flex items-center gap-4 pt-[10px]">
-                  <button
+                  <button onClick={()=>handleCartItemRemove(item)}
                     type="button"
                     className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500"
                   >
