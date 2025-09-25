@@ -69,7 +69,7 @@ const CartDetails = () => {
                     defaultValue={item.qun}
                     required=""
                   />
-                  <button onClick={handleQunPlass}
+                  <button
                     type="button"
                     id="increment-button"
                     data-input-counter-increment="counter-input"
