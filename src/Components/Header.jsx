@@ -9,9 +9,15 @@ import { Link } from 'react-router-dom'
 
 import logo from '../assets/Logo.png'
 
-const Header = () => {
-  let [showN, setShowN] = useState()
+import { useSelector } from 'react-redux'
 
+const Header = () => {
+  let cartdata = useSelector((state) => state.product.cartItem)
+
+
+
+
+  let [showN, setShowN] = useState()
 
   let [show, setShow] = useState()
   let cateRaf = useRef()
@@ -49,8 +55,8 @@ const Header = () => {
   }, []);
 
 
-  let [akk,setAkk] = useState(false)
-  let handelfalse = ()=>{
+  let [akk, setAkk] = useState(false)
+  let handelfalse = () => {
     setAkk(false)
   }
 
@@ -67,25 +73,25 @@ const Header = () => {
             <div className="w-4/12">
               <ul className='flex gap-2'>
                 <Link to="/">
-                <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>Home</li>
-                
+                  <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>Home</li>
+
                 </Link>
-                
+
                 <Link to="/shop">
-                <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>Shop</li>
-                
+                  <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>Shop</li>
+
                 </Link>
                 <Link to="/about">
-                
-                <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>About</li>
+
+                  <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>About</li>
                 </Link>
                 <Link to="/contacts">
-                
-                <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[70px] duration-300'>Contacts</li>
+
+                  <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[70px] duration-300'>Contacts</li>
                 </Link>
-                <Link to= "/journal">
-                
-                <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>Journal</li>
+                <Link to="/journal">
+
+                  <li className='cursor-pointer text-[14px] font-dm hover:font-bold w-[50px] duration-300'>Journal</li>
                 </Link>
               </ul>
             </div>
@@ -396,49 +402,36 @@ const Header = () => {
             </div>
             <div className="w-3/12 relative z-[30]">
               <div className="pl-[20px] flex justify-end gap-3 items-center">
-                <div ref={cateRRaf} className=" cursor-pointer">
-                  <MdPeople className='text-[20px]' />
+                <div ref={cateRRaf} className="cursor-pointer p-2 hover:bg-gray-100 rounded-full transition duration-200">
+                  <MdPeople className="text-2xl text-gray-700" />
                 </div>
-                <div onClick={()=>setAkk(!akk)} className=" cursor-pointer">
-                  <FaCartShopping />
+
+                <Link to='/cartdetails'>
+                <div onClick={() => setAkk(!akk)}className="relative flex items-center cursor-pointer p-2 hover:bg-gray-100 rounded-full transition duration-200">
+                  <FaCartShopping className="text-2xl text-gray-700" />
+                  {cartdata.length > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5 shadow">
+                      {cartdata.length}
+                    </span>
+                  )}
                 </div>
+                
+                </Link>
+
               </div>
-              {showw && 
-              <div className="My Account,Log-Out absolute top-10 right-10">
-                <div className="text-center">
-                  <div className=" px-[30px] py-2 border-1 border-b-0 hover:bg-[black] duration-300 border-[#F0F0F0] text-[14px] font-dm font-bold hover:text-[#FFFFFF] ">
-                    <p >MY Account</p>
-                  </div>
-                  <div className=" px-[30px] py-2 border-1  hover:bg-[black] duration-300 border-[#F0F0F0] text-[14px] font-dm font-bold  hover:text-[#FFFFFF]">
-                    <p >Log Out</p>
-                  </div>
-                </div>
-              </div>
-              }
-              {akk &&  
-              
-              <div className=" absolute top-12 right-0">
-                <div className="flex items-center gap-2 bg-[#F5F5F3] p-[20px]">
-                  <div className=" w-[60px] h-[60px] bg-[#5f635e]">
-                    
-                  </div>
-                  <div className="txt">
-                    <h4>Black Smart Watch</h4>
-                    <p>$44.00</p>
-                  </div>
-                  <div onClick={()=>handelfalse(akk)} >
-                    <RxCross2 className="text-[20px] hover:text-[green] cursor-pointer"/>
-                  </div>
-                </div>
-                  <div className="bg-[#FFFFFF] py-[5px]">
-                    <p className='text-[#767676] font-dm text-[14px]'>Subtotal: <span className='text-[#262626] font-dm text-[14px] font-bold'>$44.00</span></p>
-                    <div className="flex items-center justify-around pt-[10px]">
-                      <div className="text-[14px] font-bold font-dm text-[#262626] border-1 px-[20px] py-[10px] hover:bg-[#262626] hover:text-[#FFFFFF] duration-300">View Cart</div>
-                      <div className="text-[14px] font-bold font-dm text-[#262626] border-1 px-[20px] py-[10px] hover:bg-[#262626] hover:text-[#FFFFFF] duration-300">Checkout</div>
+              {showw &&
+                <div className="My Account,Log-Out absolute top-10 right-10">
+                  <div className="text-center">
+                    <div className=" px-[30px] py-2 border-1 border-b-0 hover:bg-[black] duration-300 border-[#F0F0F0] text-[14px] font-dm font-bold hover:text-[#FFFFFF] ">
+                      <p >MY Account</p>
+                    </div>
+                    <div className=" px-[30px] py-2 border-1  hover:bg-[black] duration-300 border-[#F0F0F0] text-[14px] font-dm font-bold  hover:text-[#FFFFFF]">
+                      <p >Log Out</p>
                     </div>
                   </div>
-              </div>
+                </div>
               }
+
             </div>
 
           </div>
