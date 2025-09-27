@@ -49,6 +49,7 @@ const ProductDetails = () => {
   console.log(singleProducts.reviews);
 
 
+
   let [onk, seoShowK] = useState(true);
   let [showpp, setShowpp] = useState(false);
   let [onshow, setOnShow] = useState(1);
@@ -60,6 +61,7 @@ const ProductDetails = () => {
   let handleAddtoCartd = (item) => {
     // alert("ran hoisa ")
     dispatch(addToCart({...item,qun:1 }))
+    
   }
 
   return (
