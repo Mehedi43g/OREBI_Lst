@@ -23,12 +23,29 @@ export const productSlic = createSlice({
     let filtercart = state.cartItem.filter((item)=>item.id !=action.payload.id)
     state.cartItem = filtercart;    
    },
- 
+   addQuntt:(state,action)=>{
+    let findProduct = state.cartItem.findIndex((item)=>item.id == action.payload.id)
+    if(findProduct !== -1){
+      state.cartItem[findProduct].qun +=1;
+    }
+
+
+   },
+   deleteQuntt:(state,action)=>{
+    console.log(action.payload);
+    
+    let findProduct = state.cartItem.findIndex((item)=>item.id == action.payload.id)
+    if(findProduct !== -1){
+      if (state.cartItem[findProduct].qun > 1) {
+        state.cartItem[findProduct].qun -=1;
+      }
+    }
+   }
    
   }
 })
 
 
-export const { addToCart,removeCart } = productSlic.actions
+export const { addToCart,removeCart,addQuntt,deleteQuntt } = productSlic.actions
 
 export default productSlic.reducer

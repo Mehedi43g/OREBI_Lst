@@ -1,14 +1,22 @@
 import { useSelector,useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeCart } from "../Components/Slice/ProductSlic";
+import { addQuntt, deleteQuntt, removeCart } from "../Components/Slice/ProductSlic";
 const CartDetails = () => {
   let dispatch = useDispatch()
     let cartData = useSelector((state)=>state.product.cartItem)
-
     let handleCartItemRemove = (item)=>{
       dispatch(removeCart(item))
+    }
+
+    let addQun =(item)=>{
+      dispatch(addQuntt({...item,qun: 1}))
+      // console.log(item);
       
     }
+    let deleteQun =(item)=>{
+      dispatch(deleteQuntt(item))
+    }
+
     
 
   return (
@@ -38,7 +46,7 @@ const CartDetails = () => {
               </label>
               <div className="flex items-center justify-between md:order-3 md:justify-end">
                 <div className="flex items-center">
-                  <button
+                  <button onClick={()=>deleteQun(item)}
                     type="button"
                     id="decrement-button"
                     data-input-counter-decrement="counter-input"
@@ -66,10 +74,11 @@ const CartDetails = () => {
                     data-input-counter=""
                     className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 "
                     placeholder=""
-                    defaultValue={item.qun}
+                    value={item.qun}
                     required=""
                   />
-                  <button
+                 
+                  <button onClick={()=>addQun(item)}
                     type="button"
                     id="increment-button"
                     data-input-counter-increment="counter-input"
