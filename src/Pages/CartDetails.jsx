@@ -152,36 +152,32 @@ const CartDetails = () => {
                 :
                 <h2 className="text-base font-bold text-gray-900 ">No  Cart Items found</h2>
               }
-
-
-
-
             </div>
+            
 
+
+              {cartData.length > 0 ? 
+              cartData.map((item)=>(
             <div className="hidden xl:mt-8 xl:block">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-2xl font-semibold text-gray-900 ">
                 People also bought
               </h3>
-              <div className="mt-6 grid grid-cols-3 gap-4 sm:mt-8">
+              <div className="mt-6 grid grid-cols-3 gap-4 sm:mt-8 ">
 
 
                 <div className="space-y-6 overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm ">
                   <a href="#" className="overflow-hidden rounded">
-                    <img
-                      className="mx-auto h-44 w-44 dark:hidden"
-                      src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/apple-watch-light.svg"
-                      alt="imac image"
-                    />
+                   
                     <img
                       className="mx-auto hidden h-44 w-44 dark:block"
-                      src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/apple-watch-dark.svg"
+                      src={item.thumbnail}
                       alt="imac image"
                     />
                   </a>
                   <div>
                     <a
                       href="#"
-                      className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white"
+                      className="text-lg font-semibold leading-tight text-gray-900 hover:underline"
                     >
                       Apple Watch Series 8
                     </a>
@@ -230,7 +226,7 @@ const CartDetails = () => {
                     </div>
                     <button
                       type="button"
-                      className="inline-flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium  text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                      className="inline-flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium   hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                     >
                       <svg
                         className="-ms-2 me-2 h-5 w-5"
@@ -255,6 +251,12 @@ const CartDetails = () => {
                 </div>
               </div>
             </div>
+              ))
+              
+              : 
+               <h2 className="text-base font-bold text-gray-900 ">No wish found</h2>
+              
+              }
           </div>
           <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
             <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm ">
