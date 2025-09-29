@@ -18,20 +18,21 @@ export const productSlic = createSlice({
       state.cartItem = [ ...state.cartItem, action.payload];
     }
    },
-
+   
    removeCart:(state,action)=>{
     // state.cartItem = action.payload;
     let filtercart = state.cartItem.filter((item)=>item.id !=action.payload.id)
     state.cartItem = filtercart;    
    },
 
-   addQuntt:(state,action)=>{
-    let findProduct = state.cartItem.findIndex((item)=>item.id == action.payload.id)
-    if(findProduct !== -1){
-      state.cartItem[findProduct].qun +=1;
+  //  addQuntt:(state,action)=>{
+  //   let findProduct = state.cartItem.findIndex((item)=>item.id == action.payload.id)
+  //   if(findProduct !== -1){
+  //     state.cartItem[findProduct].qun +=1;
 
-    }
-   },
+  //   }
+  //  },
+  
 
    deleteQuntt:(state,action)=>{
     let findProduct = state.cartItem.findIndex((item)=>item.id == action.payload.id)
@@ -41,7 +42,6 @@ export const productSlic = createSlice({
       }else{
         state.cartItem.splice(findProduct, 1);
       }
-      
     }
    },
   }

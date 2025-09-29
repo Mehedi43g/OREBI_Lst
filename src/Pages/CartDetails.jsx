@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { addQuntt, deleteQuntt, removeCart } from "../Components/Slice/ProductSlic";
+import { addQuntt, addToCart, deleteQuntt, removeCart } from "../Components/Slice/ProductSlic";
 const CartDetails = () => {
   let dispatch = useDispatch()
   let cartData = useSelector((state) => state.product.cartItem)
@@ -9,7 +9,7 @@ const CartDetails = () => {
   }
 
   let addQun = (item) => {
-    dispatch(addQuntt({ ...item, qun: 1 }))
+    dispatch(addToCart({ ...item, qun: 1 }))
     // console.log(item);
 
   }
@@ -102,8 +102,12 @@ const CartDetails = () => {
                         </div>
                         <div className="text-end md:order-4 md:w-32">
                           <p className="text-base font-bold text-gray-900 ">
-                            {(
+                            {/* {(
                               (item.price - (item.price * item.discountPercentage) / 100) *
+                              item.qun
+                            ).toFixed(2)} */}
+                            {(
+                              (item.price - (item.price / 100) * item.discountPercentage ) *
                               item.qun
                             ).toFixed(2)}
                           </p>
