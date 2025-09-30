@@ -5,7 +5,7 @@ import { MdPeople, MdSearch } from 'react-icons/md'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { FaCartShopping } from 'react-icons/fa6'
 import { RxCross2 } from 'react-icons/rx'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import logo from '../assets/Logo.png'
 
@@ -19,6 +19,7 @@ const Header = () => {
   let [show, setShow] = useState()
   let cateRaf = useRef()
 
+  let navigate = useNavigate()
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
@@ -75,8 +76,11 @@ const Header = () => {
     }else{
       setSearchModel(false)
     }
-
-
+  }
+  let handleMove =(id)=>{
+    navigate(`/shop/${id}`)
+    window.location.reload()
+    
   }
 
 
@@ -426,7 +430,7 @@ const Header = () => {
               <div className="absolute top-[50px] z-10 w-full max-h-[300px] overflow-y-auto rounded-2xl border border-gray-300 bg-white shadow-lg">
                 
                 {filterProducts.map((item) => (
-                  <Link to={`/shop/${item.id}`}>
+                  <p onClick={()=>handleMove(item.id)}>
                   <div className="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 transition-colors cursor-pointer">
                     <div className="w-[55px] h-[55px] flex items-center justify-center overflow-hidden rounded-lg border border-gray-200 bg-gray-50">
                       <img src={item.thumbnail} alt="" className="h-full w-full object-cover" />
@@ -434,7 +438,7 @@ const Header = () => {
                     <h2 className="text-sm font-medium text-gray-800 truncate">{item.title}</h2>
                   </div>
                   
-                  </Link>
+                  </p>
                 ))}
               </div>
                 }
