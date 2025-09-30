@@ -2,7 +2,7 @@ import Container from './Container'
 import { FaAngleRight, FaBars } from 'react-icons/fa'
 import { CiSearch } from 'react-icons/ci'
 import { MdPeople, MdSearch } from 'react-icons/md'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { FaCartShopping } from 'react-icons/fa6'
 import { RxCross2 } from 'react-icons/rx'
 import { Link } from 'react-router-dom'
@@ -10,34 +10,33 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/Logo.png'
 
 import { useSelector } from 'react-redux'
+import { ApiData } from './ContextApi'
 
 const Header = () => {
   let cartdata = useSelector((state) => state.product.cartItem)
 
-
-
-
   let [showN, setShowN] = useState()
-
   let [show, setShow] = useState()
   let cateRaf = useRef()
+
+  
   useEffect(() => {
     document.addEventListener("click", (e) => {
       console.log(cateRaf.current.contains(e.target) == true);
       if (cateRaf.current.contains(e.target) == true) {
         setShow(true)
-
-
+        
+        
       } else {
         setShow(false)
       }
-
+      
     })
   }, [show])
-
+  
   const [showw, setShoww] = useState(false);
   const cateRRaf = useRef();
-
+  
   useEffect(() => {
     const handleClick = (e) => {
       if (cateRRaf.current && cateRRaf.current.contains(e.target)) {
@@ -46,20 +45,32 @@ const Header = () => {
         setShoww(false);
       }
     };
-
+    
     document.addEventListener("click", handleClick);
-
+    
     return () => {
       document.removeEventListener("click", handleClick);
     };
   }, []);
-
-
+  
+  
   let [akk, setAkk] = useState(false)
   let handelfalse = () => {
     setAkk(false)
   }
+  
+  let [filterProducts, setFilterProduct] = useState([])
+  console.log(filterProducts);
+  // product data fatch
+  let {info,loading} = useContext(ApiData)
 
+  // search functionality apply
+  let handleSearch = (e)=>{
+    let productFilter = info.filter((item)=> item.title.toLowerCase().includes(e.target.value.toLowerCase()));
+    setFilterProduct(productFilter);
+    
+    
+  }
 
 
   return (
@@ -393,12 +404,23 @@ const Header = () => {
               </div>
             </div>
             <div className="w-5/12 relative">
-              <form action="/">
-                <input className='outline-none bg-[#FFFFFF] font-dm text-[14px]  w-full pl-[20px] pr-[35px] py-[10px] text-[#C4C4C4] rounded-[10px]' type="text" placeholder='Search Products' />
+              <div className="relative">
+                <form action="/">
+                <input onChange={handleSearch} className='outline-none bg-[#FFFFFF] font-dm text-[14px]  w-full pl-[20px] pr-[35px] py-[10px] text-[#C4C4C4] rounded-[10px]' type="text" placeholder='Search Products' />
               </form>
               <div className=" absolute right-[15px] top-[30%] ">
                 <CiSearch />
               </div>
+              </div>
+              {/* product show */}
+
+
+              <div className="w-full absolute z-10 top-[50px] h-[300px] border-1 border-gray-500 rounded-[20px]">
+                {filterProducts.map((item)=>(
+                  <h2>{item.title}</h2>
+                ))}
+              </div>
+              {/* product show */}
             </div>
             <div className="w-3/12 relative z-[30]">
               <div className="pl-[20px] flex justify-end gap-3 items-center">

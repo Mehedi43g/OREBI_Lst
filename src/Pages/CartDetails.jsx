@@ -11,7 +11,6 @@ const CartDetails = () => {
   let addQun = (item) => {
     dispatch(addToCart({ ...item, qun: 1 }))
     // console.log(item);
-
   }
   let deleteQun = (item) => {
     dispatch(deleteQuntt(item))
