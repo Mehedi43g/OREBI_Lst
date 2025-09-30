@@ -1,7 +1,7 @@
 import Container from './Container'
 import lam2 from "../assets/lamtim.png"
 import lam3 from "../assets/lamlam.png"
-import lam1 from "../assets/lam.png"
+import update from "../assets/update.jpg"
 
 const Banntw = () => {
   return (
@@ -10,7 +10,7 @@ const Banntw = () => {
         <div className="flex gap-3">
             <div className="w-6/12">
         <div className="w-full relative ">
-            <img src={lam1} alt="" />
+            <img src={update} alt="" />
             <div className=" absolute top-[60%] left-[10%] ">
 
                 <h3 className='text-[39px] font-bold font-dm'>Phones Sale</h3>
