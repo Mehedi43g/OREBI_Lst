@@ -9,6 +9,7 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Posts = ({ allPage, filterCategory, active }) => {
+  window.scrollTo(0,0);
 
   let [allFilter, setAllfilter] = useState([])
   let [showAll, setShowAll] = useState(true);

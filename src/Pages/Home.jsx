@@ -5,6 +5,7 @@ import BanTxt from "../Components/BanTxt"
 import BigTime from "../Components/BigTime"
  
 const Home = () => {
+    window.scrollTo(0,0);
      
     return (
         <>

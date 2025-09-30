@@ -19,24 +19,24 @@ const Header = () => {
   let [show, setShow] = useState()
   let cateRaf = useRef()
 
-  
+
   useEffect(() => {
     document.addEventListener("click", (e) => {
       console.log(cateRaf.current.contains(e.target) == true);
       if (cateRaf.current.contains(e.target) == true) {
         setShow(true)
-        
-        
+
+
       } else {
         setShow(false)
       }
-      
+
     })
   }, [show])
-  
+
   const [showw, setShoww] = useState(false);
   const cateRRaf = useRef();
-  
+
   useEffect(() => {
     const handleClick = (e) => {
       if (cateRRaf.current && cateRRaf.current.contains(e.target)) {
@@ -45,31 +45,38 @@ const Header = () => {
         setShoww(false);
       }
     };
-    
+
     document.addEventListener("click", handleClick);
-    
+
     return () => {
       document.removeEventListener("click", handleClick);
     };
   }, []);
-  
-  
+
+
   let [akk, setAkk] = useState(false)
   let handelfalse = () => {
     setAkk(false)
   }
-  
+
   let [filterProducts, setFilterProduct] = useState([])
+  let [searchModel, setSearchModel] = useState(false)
   console.log(filterProducts);
   // product data fatch
-  let {info,loading} = useContext(ApiData)
+  let { info, loading } = useContext(ApiData)
 
   // search functionality apply
-  let handleSearch = (e)=>{
-    let productFilter = info.filter((item)=> item.title.toLowerCase().includes(e.target.value.toLowerCase()));
-    setFilterProduct(productFilter);
-    
-    
+
+  let handleSearch = (e) => {
+    if(e.target.value){
+      setSearchModel(true)
+      let productFilter = info.filter((item) => item.title.toLowerCase().includes(e.target.value.toLowerCase()));
+      setFilterProduct(productFilter);
+    }else{
+      setSearchModel(false)
+    }
+
+
   }
 
 
@@ -406,20 +413,32 @@ const Header = () => {
             <div className="w-5/12 relative">
               <div className="relative">
                 <form action="/">
-                <input onChange={handleSearch} className='outline-none bg-[#FFFFFF] font-dm text-[14px]  w-full pl-[20px] pr-[35px] py-[10px] text-[#C4C4C4] rounded-[10px]' type="text" placeholder='Search Products' />
-              </form>
-              <div className=" absolute right-[15px] top-[30%] ">
-                <CiSearch />
-              </div>
+                  <input onChange={handleSearch} className='outline-none bg-[#FFFFFF] font-dm text-[14px]  w-full pl-[20px] pr-[35px] py-[10px] text-[#C4C4C4] rounded-[10px]' type="text" placeholder='Search Products' />
+                </form>
+                <div className=" absolute right-[15px] top-[30%] ">
+                  <CiSearch />
+                </div>
               </div>
               {/* product show */}
 
 
-              <div className="w-full absolute z-10 top-[50px] h-[300px] border-1 border-gray-500 rounded-[20px]">
-                {filterProducts.map((item)=>(
-                  <h2>{item.title}</h2>
+                {searchModel && 
+              <div className="absolute top-[50px] z-10 w-full max-h-[300px] overflow-y-auto rounded-2xl border border-gray-300 bg-white shadow-lg">
+                
+                {filterProducts.map((item) => (
+                  <Link to={`/shop/${item.id}`}>
+                  <div className="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 transition-colors cursor-pointer">
+                    <div className="w-[55px] h-[55px] flex items-center justify-center overflow-hidden rounded-lg border border-gray-200 bg-gray-50">
+                      <img src={item.thumbnail} alt="" className="h-full w-full object-cover" />
+                    </div>
+                    <h2 className="text-sm font-medium text-gray-800 truncate">{item.title}</h2>
+                  </div>
+                  
+                  </Link>
                 ))}
               </div>
+                }
+
               {/* product show */}
             </div>
             <div className="w-3/12 relative z-[30]">
@@ -429,15 +448,15 @@ const Header = () => {
                 </div>
 
                 <Link to='/cartdetails'>
-                <div onClick={() => setAkk(!akk)}className="relative flex items-center cursor-pointer p-2 hover:bg-gray-100 rounded-full transition duration-200">
-                  <FaCartShopping className="text-2xl text-gray-700" />
-                  {cartdata.length > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5 shadow">
-                      {cartdata.length}
-                    </span>
-                  )}
-                </div>
-                
+                  <div onClick={() => setAkk(!akk)} className="relative flex items-center cursor-pointer p-2 hover:bg-gray-100 rounded-full transition duration-200">
+                    <FaCartShopping className="text-2xl text-gray-700" />
+                    {cartdata.length > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5 shadow">
+                        {cartdata.length}
+                      </span>
+                    )}
+                  </div>
+
                 </Link>
 
               </div>

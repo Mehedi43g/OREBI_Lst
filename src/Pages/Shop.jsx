@@ -10,6 +10,7 @@ import Container from '../Components/Container';
 import { useSelector } from 'react-redux';
 
 const Shop = () => {
+  window.scrollTo(0,0);
 let data = useSelector ((state)=>state.product.price)
 console.log(data);
 

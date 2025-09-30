@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, deleteQuntt, removeCart } from "../Components/Slice/ProductSlic";
 const CartDetails = () => {
+  window.scrollTo(0,0);
   let dispatch = useDispatch()
   let cartData = useSelector((state) => state.product.cartItem)
   let handleCartItemRemove = (item) => {

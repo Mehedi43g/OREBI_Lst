@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Container from '../Components/Container'
 
 const Contacts = () => {
+  window.scrollTo(0,0);
 
   let [text, settext] = useState('')
   let handleInput = (e)=>{
